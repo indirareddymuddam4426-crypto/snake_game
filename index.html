@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Snake Game</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Realistic Snake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-  <h1>Snake Game</h1>
-  <p>Score: <span id="score">0</span></p>
 
-  <canvas id="game" width="400" height="400"></canvas>
+    <canvas id="gameCanvas"></canvas>
 
-  <!-- IMPORTANT: app.js -->
-  <script src="app.js"></script>
+    <!-- HUD Overlay -->
+    <div class="hud">
+        <div class="score-container-left">
+            <div class="score-box">
+                <div class="label">SCORE</div>
+                <div class="value" id="score">0</div>
+            </div>
+            <div class="score-box">
+                <div class="label">HIGH SCORE</div>
+                <div class="value" id="highScore">0</div>
+            </div>
+        </div>
+
+        <div class="controls-top-right">
+            <button id="pauseBtn" class="btn-icon" title="Pause Game (Space)">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button id="restartHudBtn" class="btn-icon" title="Restart Game (R)">
+                <i class="fas fa-redo"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="overlay">
+        <div class="modal">
+            <h1>REAL SNAKE</h1>
+            <p>Full Screen Edition</p>
+            <div class="controls-info">Arrow Keys to Slither</div>
+            <button id="startBtn" class="btn-neon">INITIALIZE</button>
+        </div>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pauseScreen" class="overlay hidden">
+        <div class="modal">
+            <h1>PAUSED</h1>
+            <button id="resumeBtn" class="btn-neon">RESUME</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="overlay hidden">
+        <div class="modal">
+            <h1 class="danger">DEAD</h1>
+            <p>Snake Terminated</p>
+            <div class="final-score">Score: <span id="finalScore">0</span></div>
+            <button id="restartBtn" class="btn-neon">RETRY</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
