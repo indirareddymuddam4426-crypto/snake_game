@@ -1,4 +1,4 @@
-const canvas = document.getElementById("gameCanvas");
+const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 const box = 20;
@@ -33,11 +33,13 @@ function collision(head, array) {
 }
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = i == 0 ? "green" : "lightgreen";
+    ctx.fillStyle = i == 0 ? "green" : "lime";
     ctx.fillRect(snake[i].x, snake[i].y, box, box);
+
     ctx.strokeStyle = "black";
     ctx.strokeRect(snake[i].x, snake[i].y, box, box);
   }
@@ -75,10 +77,10 @@ function draw() {
     collision(newHead, snake)
   ) {
     clearInterval(game);
-    alert("Game Over! Your Score: " + score);
+    alert("Game Over! Your score: " + score);
   }
 
   snake.unshift(newHead);
 }
 
-let game = setInterval(draw, 150);
+let game = setInterval(draw, 120);
